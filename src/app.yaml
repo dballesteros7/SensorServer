@@ -1,0 +1,25 @@
+application: s~measureheaven
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+# Endpoints handler
+- url: /_ah/spi/.*
+  script: EndpointAPI.MeasurementApi.application
+- url: /.*
+  script: WebInterface.MapDisplay.application
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: endpoints
+  version: 1.0
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+- name: numpy
+  version: latest
